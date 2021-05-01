@@ -60,7 +60,7 @@ def home(request):
                         .order_by("-count", 'latest_elimination_time')
                         .values("count", "first_name", "last_name", "elimination")[:15]),
         "game_updates": models.GameUpdate.objects.order_by("-created_at"),
-        "seniors_left": seniors.filter(elimination__isnull=True).count(),
+        "seniors_left": seniors.filter(target__isnull=False).count(),
         "notifications": models.EliminationNotification.objects
                   .filter(elimination__created_at__gte=(timezone.now() - datetime.timedelta(hours=18)))
                   .order_by('-elimination__created_at'),

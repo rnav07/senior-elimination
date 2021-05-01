@@ -8,8 +8,7 @@
                 {% if request.user.check_password(request.user.initial_password) %}
                     <h1 class="display-3">Please change your password!</h1>
                     <hr style="background-color: white">
-                    <h3>You have not since initial ones were given.</h3>
-                    <p>All passwords are hashed for security.</p>
+                    <p>You have not since initial ones were given. All passwords are hashed for security.</p>
                 {% else %}
                     {% if messages %}
                         {% for message in messages %}
@@ -79,10 +78,8 @@
                                 </div>
                             </div>
                         </div>
-                    {% elif request.user.elimination is undefined %}
-                        <h1>Waiting to start game.</h1>
                     {% else %}
-                        <h1>Eliminated :(</h1>
+                        <h1>No target :(</h1>
                     {% endif %}
                 {% endif %}
             </div>

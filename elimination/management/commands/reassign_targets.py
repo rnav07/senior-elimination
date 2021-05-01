@@ -9,7 +9,7 @@ from elimination.models import Senior
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        seniors_query = Senior.objects.filter(is_superuser=False, elimination__isnull=True)
+        seniors_query = Senior.objects.filter(is_superuser=False, target__isnull=False)
         seniors = list(seniors_query)
         random.shuffle(seniors)
         with transaction.atomic():
